@@ -1,5 +1,6 @@
 import { google } from '@ai-sdk/google';
 import { Agent } from '@mastra/core/agent';
+import { weatherTool } from '../tools/weather';
 
 export const weatherAgent = new Agent({
 	name: 'FirstAgent',
@@ -11,8 +12,7 @@ export const weatherAgent = new Agent({
       - If the location name isn’t in English, please translate it
       - If giving a location with multiple parts (e.g. "New York, NY"), use the most relevant part (e.g. "New York")
       - Include relevant details like humidity, wind conditions, and precipitation
-      - Keep responses concise but informative
-      
-`,
-	model: google('gemini-2.0-flash-001')
+      - Keep responses concise but informative`,
+	model: google('gemini-2.0-flash-001'),
+      tools: { weatherTool }
 });
